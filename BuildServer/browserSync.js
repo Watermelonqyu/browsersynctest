@@ -47,7 +47,7 @@ bs({
     // No need to watch '*.js' here, webpack will take care of it
     // including full page reloads if HMR won't work
     // files: [
-    //     'css/*.css',
+    //     '../src/*.css',
     //     '*.html'
     // ]
 });

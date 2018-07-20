@@ -1,13 +1,14 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     mode: "development",
     devtool: 'inline-source-map',
-    entry: [
-        path.resolve(__dirname, 'src/index')
-    ],
+    entry: {
+        main: './src/index.js'
+    },
     // target: 'web',/
     output: {
         path: path.resolve(__dirname, 'src'),
@@ -20,30 +21,15 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: ["latest"]
+                        presets: ['latest']
                     }
                 }]
             },
             {
-                test: /.\css$/,
-                include: __dirname + "./src/css",
-                exclude: __dirname + "./src/js",
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css',
-                        options: {
-                            modules: true
-                        }
-                    }
-                ]
+                test: /\.css$/,
+                use: ['css-loader']
             }
         ]
-        // ,
-        // loaders: [
-        //     {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
-        //     {test: /\.css$/, loaders: ['style', 'css']}
-        // ]
     },
     plugins: [
         // new UglifyJsPlugin()
