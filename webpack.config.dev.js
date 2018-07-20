@@ -8,7 +8,7 @@ module.exports = {
     entry: [
         path.resolve(__dirname, 'src/index')
     ],
-    target: 'web',
+    // target: 'web',/
     output: {
         path: path.resolve(__dirname, 'src'),
         publicPath: '/',
@@ -47,5 +47,13 @@ module.exports = {
     },
     plugins: [
         // new UglifyJsPlugin()
-    ]
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        })
+    ],
+    devServer: {
+        contentBase: 'src',
+        hot: true
+    }
 };
