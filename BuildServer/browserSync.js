@@ -36,31 +36,31 @@ if (options.hot === true) {
     middleware.push(webpackHotMiddleware(bunlder));
 }
 
-bs({
-    port: 3000,
-    notify: false,
-    server: {
-        baseDir: config.output.publicPath,
-        middleware
-    },
+// bs({
+//     port: 3000,
+//     notify: false,
+//     server: {
+//         baseDir: config.output.publicPath,
+//         middleware
+//     }
 
-    // No need to watch '*.js' here, webpack will take care of it
-    // including full page reloads if HMR won't work
-    files: [
-        'css/*.css',
-        '*.html'
+//     // No need to watch '*.js' here, webpack will take care of it
+//     // including full page reloads if HMR won't work
+//     // files: [
+//     //     'css/*.css',
+//     //     '*.html'
+//     // ]
+// });
+
+bs.create().init({
+    server: "src",
+    files: ["src/css/*.css"],
+    plugins: [
+        {
+            module: "bs-html-injector",
+            options: {
+                files: ["src/*.html"]
+            }
+        }
     ]
 });
-
-// bs.create().init({
-//     server: "src",
-//     files: ["src/css/*.css"],
-//     plugins: [
-//         {
-//             module: "bs-html-injector",
-//             options: {
-//                 files: ["src/*.html"]
-//             }
-//         }
-//     ]
-// });
