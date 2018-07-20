@@ -1,4 +1,7 @@
 1. Can't fix vulnerabilities with npm audit fix -- force
     How to do manual review?
 
-    
+2. eslintrc.json
+    Rules -> no-console: 
+    // 0: off, 1: warning, 2: error
+    Error will break the build

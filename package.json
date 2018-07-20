@@ -5,8 +5,10 @@
   "main": "browserSync.js",
   "scripts": {
     "prestart": "babel-node BuildServer\\startMessage.js",
-    "start": "npm-run-all --parallel open:src localtunnel",
+    "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node BuildServer\\browserSync.js",
+    "lint": "esw webpack.config.* src BuildServer --color",
+    "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000",
     "share": "npm-run-all --parallel open:src localtunnel"
@@ -25,6 +27,9 @@
     "chalk": "^2.4.1",
     "css-loader": "^1.0.0",
     "debug": "*",
+    "eslint": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-watch": "^4.0.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.2.0",
     "lodash": "~3.10.1",
