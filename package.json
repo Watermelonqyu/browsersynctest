@@ -12,7 +12,7 @@
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000",
     "share": "npm-run-all --parallel open:src localtunnel",
-    "test": "mocha --reportor progress BuildServer\\testSetup.js \"src\\**\\*.test.js\"",
+    "test": "mocha --reportor progress BuildServer\\testSetup.js \"src\\*.test.js\"",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Q",
