@@ -1,5 +1,5 @@
 import bs from 'browser-sync';
-import fs from 'fs';
+// import fs from 'fs';
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "webpack-hot-middleware";
@@ -37,36 +37,37 @@ if (options.hot === true) {
     middleware.push(webpackHotMiddleware(bunlder));
 }
 
-import chalk from 'chalk';
+// import chalk from 'chalk';
 
-var mocks = {
-    "/mock": function (req, res) {
-        res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify([
-            {'id': 0, 'firstName': 'Bob', 'lastName': 'Smith', 'email': 'bob@gmail.com'},
-            {'id': 1, 'firstName': 'Tammy', 'lastName': 'Norton', 'email': 'tnorton@gmail.com'},
-            {'id': 2, 'firstName': 'Tina', 'lastName': 'Lee', 'email': 'lee.tina@gmail.com'}
-        ]));
-    },
-    '/mm': function(req, res) {
-        res.setHeader("Content-Type", "text/html");
-        var html = fs.readFileSync('./src//index.html');
-        res.end(html);
-    }
-};
+// var mocks = {
+//     "/users": function (req, res) {
+//         res.setHeader("Content-Type", "application/json");
+//         res.end(JSON.stringify([
+//             {'id': 0, 'firstName': 'Bob', 'lastName': 'Smith', 'email': 'bob@gmail.com'},
+//             {'id': 1, 'firstName': 'Tammy', 'lastName': 'Norton', 'email': 'tnorton@gmail.com'},
+//             {'id': 2, 'firstName': 'Tina', 'lastName': 'Lee', 'email': 'lee.tina@gmail.com'}
+//         ]));
+//     },
+//     '/mm': function(req, res) {
+//         res.setHeader("Content-Type", "text/html");
+//         var html = fs.readFileSync('./src//index.html');
+//         res.end(html);
+//     }
+// };
 
 bs({
     port: 3000,
     notify: false,
     server: {
         baseDir: config.output.publicPath,
-        middleware: function(req, res, next) {
-            if (mocks[req.url]) {
-                console.log(chalk.green('get here!'));
-                mocks[req.url](req, res);
-            }
-            next();
-        }
+        middleware
+        // : function(req, res, next) {
+        //     if (mocks[req.url]) {
+        //         console.log(chalk.green('get here!'));
+        //         mocks[req.url](req, res);
+        //     }
+        //     next();
+        // }
     }
 
     // No need to watch '*.js' here, webpack will take care of it

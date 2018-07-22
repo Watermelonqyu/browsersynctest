@@ -14,11 +14,11 @@ describe('Our first test', () => {
 });
 
 describe('index.html', () => {
-    it('should say My First Heading', (done) => {
+    it('should have h1 says users', (done) => {
         const index = fs.readFileSync('./src/index.html', 'utf-8');
         jsdom.env(index, function(err, window) {
             const h1 = window.document.getElementById('h1');
-            expect(h1.innerHTML).to.equal('My First Heading');
+            expect(h1.innerHTML).to.equal('Users');
             done();
             window.close();
         });
